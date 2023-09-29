@@ -19,6 +19,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
+        _logger.LogInformation("Test log from Index code-behind");
         Branches = _context.Branches.ToList();
     }
 }
