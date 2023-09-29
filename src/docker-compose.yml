@@ -8,6 +8,8 @@ services:
   docker.aspnetcore.web:
     container_name: docker_aspnetcore_web
     image: ${DOCKER_REGISTRY-}dockeraspnetcoreweb
+    ports:
+      - 51567:443
     depends_on:
       - "postgres_image"
     build:
