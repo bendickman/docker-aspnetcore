@@ -8,3 +8,23 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div class="m-4">
+    <div class="card-group">
+        @foreach (var branch in Model.Branches)
+        {
+            <div class="card">
+                <img src="/images/branch.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@branch.Name</h5>
+                    <p class="card-text">@(branch.Description)...</p>
+                    <a href="/branch/@branch.Id" class="btn btn-primary stretched-link">View Branch</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 5 mins ago</small>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

@@ -1,7 +1,10 @@
+using Docker.AspNetCore.Web.Setup;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services.AddWebApp();
 
 var app = builder.Build();
 

@@ -1,8 +1,37 @@
 version: '3.4'
 
+networks:
+  dockeraspnetcoreweb-dev:
+    driver: bridge
+
 services:
   docker.aspnetcore.web:
     image: ${DOCKER_REGISTRY-}dockeraspnetcoreweb
+    depends_on:
+      - "postgres_image"
     build:
       context: .
       dockerfile: Docker.AspNetCore.Web/Dockerfile
+    environment:
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=branchdb;username=branchuser;password=branchuser"
+    networks:
+      - dockeraspnetcoreweb-dev
+
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - "5432"
+    restart: always
+    volumes:
+      - ./Docker.AspNetCore.Web/db_volume:/var/lib/postgresql/data
+      - ./Docker.AspNetCore.Web/dbscripts:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: "branchuser"
+      POSTGRES_PASSWORD: "branchuser"
+      POSTGRES_DB: "branchdb"
+    networks:
+      - dockeraspnetcoreweb-dev
+volumes:
+  db_volume:
+
+  
