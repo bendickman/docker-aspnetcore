@@ -1,16 +1,16 @@
 ﻿
-\connect branchdb
+\connect blogdb
 
-CREATE TABLE branch
+CREATE TABLE blog
 (
     id serial PRIMARY KEY,
-    name  VARCHAR (100)  NOT NULL,
+    title  VARCHAR (100)  NOT NULL,
     description  VARCHAR (1000)  NOT NULL
 );
 
-ALTER TABLE "branch" OWNER TO branchuser;
+ALTER TABLE "blog" OWNER TO bloguser;
 
-Insert into branch(name,description) values( 'Connells Hitchin','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');
-Insert into branch(name,description) values( 'Brown and Merry Woburn','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');
-Insert into branch(name,description) values( 'Burchell Edwards Putney','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');
-Insert into branch(name,description) values( 'Paul Dubberley Oxford','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');
+Insert into blog(title,description) values( 'Blog Post 1','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');
+Insert into blog(title,description) values( 'Blog Post 2','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');
+Insert into blog(title,description) values( 'Blog Post 3','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');
+Insert into blog(title,description) values( 'Blog Post 4','Lorem ipsum dolor sit amet consectetur adipiscing elit odio fermentum quam, dignissim dictum vestibulum');

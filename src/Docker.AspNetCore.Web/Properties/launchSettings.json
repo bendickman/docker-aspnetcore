@@ -22,7 +22,7 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
         "ASPNETCORE_URLS": "https://+:443;http://+:80",
-        "DB_CONNECTION_STRING": "host=postgres_image;port=5432;database=branchdb;username=branchuser;password=branchuser"
+        "DB_CONNECTION_STRING": "host=postgres_image;port=5432;database=blogdb;username=bloguser;password=bloguser"
       },
       "publishAllPorts": true,
       "useSSL": true

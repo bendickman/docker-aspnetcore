@@ -12,13 +12,13 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Branch> Branches { get; set; }
+    public DbSet<Blog> BlogPosts { get; set; }
 
     protected override void OnModelCreating(
         ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        new BranchMap(modelBuilder.Entity<Branch>());
+        new BlogMap(modelBuilder.Entity<Blog>());
     }
 }

@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Docker.AspNetCore.Web.Data.Maps;
 
-public class BranchMap
+public class BlogMap
 {
-    public BranchMap(
-        EntityTypeBuilder<Branch> entityTypeBuilder)
+    public BlogMap(
+        EntityTypeBuilder<Blog> entityTypeBuilder)
     {
         entityTypeBuilder.HasKey(x => x.Id);
-        entityTypeBuilder.ToTable("branch");
+        entityTypeBuilder.ToTable("blog");
 
         entityTypeBuilder.Property(x => x.Id).HasColumnName("id");
-        entityTypeBuilder.Property(x => x.Name).HasColumnName("name");
+        entityTypeBuilder.Property(x => x.Title).HasColumnName("title");
         entityTypeBuilder.Property(x => x.Description).HasColumnName("description");
     }
 }

@@ -11,14 +11,14 @@
 
 <div class="m-4">
     <div class="card-group">
-        @foreach (var branch in Model.Branches)
+        @foreach (var blogPost in Model.BlogPosts)
         {
             <div class="card">
-                <img src="/images/branch.jpg" class="card-img-top" alt="...">
+                <img src="/images/docker-compose.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">@branch.Name</h5>
-                    <p class="card-text">@(branch.Description)...</p>
-                    <a href="/branch/@branch.Id" class="btn btn-primary stretched-link">View Branch</a>
+                    <h5 class="card-title">@blogPost.Title</h5>
+                    <p class="card-text">@(blogPost.Description)...</p>
+                    <a href="/blog/@blogPost.Id" class="btn btn-primary stretched-link">View Post</a>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Last updated 5 mins ago</small>

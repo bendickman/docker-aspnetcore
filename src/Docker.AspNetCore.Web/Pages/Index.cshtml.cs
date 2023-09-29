@@ -7,7 +7,7 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     private readonly ApplicationDbContext _context;
-    public IEnumerable<Branch> Branches;
+    public IEnumerable<Blog> BlogPosts;
 
     public IndexModel(
         ILogger<IndexModel> logger,
@@ -20,6 +20,6 @@ public class IndexModel : PageModel
     public void OnGet()
     {
         _logger.LogInformation("Test log from Index code-behind");
-        Branches = _context.Branches.ToList();
+        BlogPosts = _context.BlogPosts.ToList();
     }
 }

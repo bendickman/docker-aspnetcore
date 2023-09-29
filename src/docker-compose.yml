@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: Docker.AspNetCore.Web/Dockerfile
     environment:
-      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=branchdb;username=branchuser;password=branchuser"
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=blogdb;username=bloguser;password=bloguser"
     networks:
       - dockeraspnetcoreweb-dev
 
@@ -30,9 +30,9 @@ services:
       - ./Docker.AspNetCore.Web/db_volume:/var/lib/postgresql/data
       - ./Docker.AspNetCore.Web/dbscripts:/docker-entrypoint-initdb.d
     environment:
-      POSTGRES_USER: "branchuser"
-      POSTGRES_PASSWORD: "branchuser"
-      POSTGRES_DB: "branchdb"
+      POSTGRES_USER: "bloguser"
+      POSTGRES_PASSWORD: "bloguser"
+      POSTGRES_DB: "blogdb"
     networks:
       - dockeraspnetcoreweb-dev
 
