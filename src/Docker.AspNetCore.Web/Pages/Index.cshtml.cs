@@ -1,25 +1,25 @@
-﻿using Docker.AspNetCore.Web.Data;
-using Docker.AspNetCore.Web.Data.Models;
+﻿using Docker.AspNetCore.Web.Data.Models;
+using Docker.AspNetCore.Web.Data.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Docker.AspNetCore.Web.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    private readonly ApplicationDbContext _context;
+    private readonly IBlogRepository _blogRepository;
     public IEnumerable<Blog> BlogPosts;
 
     public IndexModel(
         ILogger<IndexModel> logger,
-        ApplicationDbContext context)
+        IBlogRepository blogRepository)
     {
         _logger = logger;
-        _context = context;
+        _blogRepository = blogRepository;
     }
 
     public void OnGet()
     {
         _logger.LogInformation("Test log from Index code-behind");
-        BlogPosts = _context.BlogPosts.ToList();
+        BlogPosts = _blogRepository.GetBlogPosts();
     }
 }

@@ -12,11 +12,16 @@ services:
       - 51567:443
     depends_on:
       - "postgres_image"
+      - "redis_cache"
+    links:
+      - "redis_cache"
     build:
       context: .
       dockerfile: Docker.AspNetCore.Web/Dockerfile
     environment:
       DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=blogdb;username=bloguser;password=bloguser"
+      REDIS_CONNECTION_STRING: "redis_cache:6379,abortConnect=False"
+      NODE_ENV: production
     networks:
       - dockeraspnetcoreweb-dev
 
@@ -63,7 +68,16 @@ services:
     networks:
      - dockeraspnetcoreweb-dev
 
+  redis_cache:
+    container_name: redis_cache
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=my-password
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+
 volumes:
   elasticsearch-data:
-
-  

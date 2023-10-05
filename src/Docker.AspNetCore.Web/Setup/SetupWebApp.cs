@@ -1,4 +1,6 @@
 ﻿using Docker.AspNetCore.Web.Data;
+using Docker.AspNetCore.Web.Data.Repositories;
+using Docker.AspNetCore.Web.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Docker.AspNetCore.Web.Setup;
@@ -13,6 +15,15 @@ public static class SetupWebApp
         {
             options.UseNpgsql(connectionString);
         });
+
+        var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRING");
+        services.AddStackExchangeRedisCache(opt =>
+        {
+            opt.Configuration = redisConnectionString;
+        });
+
+        services.AddScoped<BlogRepository>();
+        services.AddScoped<IBlogRepository, BlogCachedRepository>();
 
         return services;
     }
